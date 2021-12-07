@@ -1,0 +1,52 @@
+.Swiper {
+  position: relative;
+  border: 1px solid black;
+  .nodes {
+    min-width: 100%;
+    height: 100%;
+    .SwiperNode {
+      position: absolute;
+      display: none;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      &.active {
+        z-index: 100;
+      }
+      &.active,
+      &.active + .SwiperNode {
+        display: block;
+      }
+    }
+  }
+
+  .leftArrow,
+  .rightArrow {
+    width: 10%;
+    position: absolute;
+    top: 50%;
+    cursor: pointer;
+    img {
+      display: block;
+      width: 100%;
+    }
+  }
+  .leftArrow {
+    left: 0;
+    transform: translateX(-100%) rotate(180deg);
+  }
+
+  .rightArrow {
+    right: 0;
+    transform: translateX(100%);
+  }
+
+  .swiperStatus {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateY(100%);
+  }
+}
