@@ -1,3 +1,59 @@
-.BurgerMenu img {
-  width: 100%;
+.BurgerMenu {
+  .list {
+    width: 100%;
+    padding: 50% 0;
+    cursor: pointer;
+    position: relative;
+    align-items: center;
+    span {
+      display: block;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      height: 15%;
+      width: 100%;
+      background: #000;
+      transition: 0.5s;
+      &:nth-child(1) {
+        transform: translateY(calc(-185% - 0.1em));
+      }
+      &:nth-child(3) {
+        transform: translateY(calc(85% + 0.1em));
+      }
+    }
+  }
+
+  .BurgerOption {
+    padding: 2px;
+    margin-bottom: 2px;
+    transform: translateX(1000px);
+    transition: 0.5s;
+    opacity: 0;
+    img {
+      display: block;
+      width: 100%;
+    }
+  }
+
+  &.opened {
+    .list {
+      span {
+        &:nth-child(1) {
+          transform: rotate(45deg);
+        }
+        &:nth-child(2) {
+          transform-origin: center;
+          transform: scaleX(0.01);
+        }
+        &:nth-child(3) {
+          transform: rotate(-45deg);
+        }
+      }
+    }
+
+    .BurgerOption {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
 }

@@ -1,20 +1,21 @@
 import React, { useState } from 'react';
 import './BurgerMenu.scss';
 import BurgerOption from './BurgerOption/BurgerOption';
-import listImage from './list.png';
 
 export default function BurgerMenu({ children }) {
   const [burgerState, changeBurger] = useState(false);
   return (
-    <div className="BurgerMenu">
-      <img
+    <div className={'BurgerMenu' + (burgerState ? ' opened' : '')}>
+      <div
         className="list"
-        src={listImage}
-        alt=""
         onClick={() => {
           changeBurger(!burgerState);
         }}
-      />
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
       {Array.isArray(children)
         ? children.map((el, i) => <BurgerOption key={i}>{el}</BurgerOption>)
         : <BurgerOption>{children}</BurgerOption> || 'Nothing here :c'}
