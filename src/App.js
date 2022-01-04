@@ -6,6 +6,8 @@ import homeIcon from './img/home.png';
 import profileIcon from './img/profile-user.png';
 import infoIcon from './img/information-button.png';
 import spaceImage from './img/space.jpg';
+import yinyang from './img/yin-yang.jpg';
+import stich from './img/stich.jpg';
 
 function App() {
   return (
@@ -22,11 +24,11 @@ function App() {
           <SwiperNode bgImage={spaceImage} active>
             <h1 style={{ color: 'white' }}>1</h1>
           </SwiperNode>
-          <SwiperNode>
-            <h1>2</h1>
+          <SwiperNode bgImage={yinyang}>
+            <h1 style={{ color: 'white' }}>2</h1>
           </SwiperNode>
-          <SwiperNode>
-            <h1>3</h1>
+          <SwiperNode bgImage={stich}>
+            <h1 style={{ color: 'white' }}>3</h1>
           </SwiperNode>
         </Swiper>
       </div>

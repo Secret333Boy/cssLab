@@ -1,48 +1,57 @@
-import React, { useRef, useState } from 'react';
+import React from 'react';
 import './Swiper.scss';
 import arrowImage from './img/arrow.png';
 
 export function Swiper({ children }) {
-  const [active, setActive] = useState(0);
-  const nodesRef = useRef(null);
-  const nodes = nodesRef.current;
-  nodes?.children[active].classList.add('active');
-  const cardsCount = children.length;
   return (
-    <div className="Swiper">
-      <div
-        className="leftArrow"
-        onClick={(e) => {
-          console.log(e);
-          nodes?.children[active].classList.remove('active');
-          setActive(active - 1 < 0 ? cardsCount - 1 : active - 1);
-        }}
-      >
-        <img src={arrowImage} />
+    <>
+      <input
+        type="radio"
+        id="node1"
+        className="node1"
+        name="node-selector"
+        defaultChecked
+      />
+      <input type="radio" id="node2" className="node2" name="node-selector" />
+      <input type="radio" id="node3" className="node3" name="node-selector" />
+      <div className="Swiper">
+        <label className="leftArrow" htmlFor="node1">
+          <img src={arrowImage} />
+        </label>
+        <label className="leftArrow" htmlFor="node2">
+          <img src={arrowImage} />
+        </label>
+        <label className="leftArrow" htmlFor="node3">
+          <img src={arrowImage} />
+        </label>
+        <div className="swiperView">
+          <div className="nodes">{children}</div>
+        </div>
+
+        <label className="rightArrow" htmlFor="node1">
+          <img src={arrowImage} />
+        </label>
+        <label className="rightArrow" htmlFor="node2">
+          <img src={arrowImage} />
+        </label>
+        <label className="rightArrow" htmlFor="node3">
+          <img src={arrowImage} />
+        </label>
+
+        <div className="swiperStatus">
+          <div className="node1Status"></div>
+          <div className="node2Status"></div>
+          <div className="node3Status"></div>
+        </div>
       </div>
-      <div className="nodes" ref={nodesRef}>
-        {children}
-      </div>
-      <div
-        className="rightArrow"
-        onClick={(e) => {
-          e.target.parentElement.previousSibling.children[
-            active
-          ].classList.remove('active');
-          setActive(active + 1 < cardsCount ? active + 1 : 0);
-        }}
-      >
-        <img src={arrowImage} />
-      </div>
-      <div className="swiperStatus" onClick={() => {}}></div>
-    </div>
+    </>
   );
 }
 
-export function SwiperNode({ children, bgImage, active = false }) {
+export function SwiperNode({ children, bgImage }) {
   return (
     <div
-      className={'SwiperNode' + (active ? ' active' : '')}
+      className="SwiperNode"
       style={
         bgImage
           ? { backgroundImage: `url(${bgImage})` }
