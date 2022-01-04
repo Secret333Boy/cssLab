@@ -6,7 +6,6 @@ export function Swiper({ children }) {
   const [active, setActive] = useState(0);
   const nodesRef = useRef(null);
   const nodes = nodesRef.current;
-  console.log(active);
   nodes?.children[active].classList.add('active');
   const cardsCount = children.length;
   return (

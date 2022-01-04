@@ -1,24 +1,28 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './BurgerMenu.scss';
 import BurgerOption from './BurgerOption/BurgerOption';
 
 export default function BurgerMenu({ children }) {
-  const [burgerState, changeBurger] = useState(false);
   return (
-    <div className={'BurgerMenu' + (burgerState ? ' opened' : '')}>
-      <div
-        className="list"
-        onClick={() => {
-          changeBurger(!burgerState);
-        }}
-      >
-        <span></span>
-        <span></span>
-        <span></span>
+    <>
+      <input
+        type="checkbox"
+        className="burger-toggle"
+        id="burger-toggle"
+        name="burger-toggle"
+      />
+      <div className="BurgerMenu">
+        <label htmlFor="burger-toggle">
+          <div className="list">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </label>
+        {Array.isArray(children)
+          ? children.map((el, i) => <BurgerOption key={i}>{el}</BurgerOption>)
+          : <BurgerOption>{children}</BurgerOption> || 'Nothing here :c'}
       </div>
-      {Array.isArray(children)
-        ? children.map((el, i) => <BurgerOption key={i}>{el}</BurgerOption>)
-        : <BurgerOption>{children}</BurgerOption> || 'Nothing here :c'}
-    </div>
+    </>
   );
 }
