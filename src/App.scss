@@ -1,0 +1,27 @@
+.App {
+  width: 100%;
+}
+
+.container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.BurgerMenu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  max-width: 3rem;
+  position: fixed;
+  top: 10px;
+  right: 10px;
+}
+
+.Swiper {
+  width: 300px;
+  height: 500px;
+}
